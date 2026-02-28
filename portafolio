@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Luis</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+
+        /* FONDO ANIMADO */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI',sans-serif;
+            color: white;
+            background: linear-gradient(-45deg,#0f2027,#203a43,#00c9a7,#1c92d2);
+            background-size: 400% 400%;
+            animation: bg 15s ease infinite;
+        }
+
+        @keyframes bg {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        /* PARTICULAS */
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+            .particles span {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: rgba(0,255,200,.4);
+                border-radius: 50%;
+                animation: float 20s linear infinite;
+            }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 0
+            }
+
+            50% {
+                opacity: 1
+            }
+
+            100% {
+                transform: translateY(-1000px) scale(1);
+                opacity: 0
+            }
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(0,0,0,.5);
+            backdrop-filter: blur(10px);
+        }
+
+        /* SECCIONES */
+        .section {
+            display: none;
+            padding: 70px 20px;
+            animation: fade .8s;
+        }
+
+        .active-section {
+            display: block;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* TARJETAS */
+        .card {
+            background: rgba(255,255,255,.08);
+            border: none;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            transition: .4s;
+        }
+
+            .card:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 0 35px rgba(0,255,200,.3);
+            }
+
+        /* FOTO */
+        .profile-pic {
+            width: 150px;
+            border-radius: 50%;
+            opacity: .8;
+            transition: .4s;
+        }
+
+            .profile-pic:hover {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+        .about-pic {
+            width: 190px;
+            border-radius: 15px;
+            opacity: .85;
+            transition: .4s;
+        }
+
+            .about-pic:hover {
+                transform: scale(1.05);
+                opacity: 1
+            }
+
+        /* TITULO */
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0,255,200,.6);
+        }
+
+        .typing {
+            color: #00ffd5;
+            font-weight: 600;
+            height: 30px;
+        }
+
+        /* BARRAS HABILIDADES */
+        .progress {
+            height: 12px;
+            background: #ffffff22;
+            border-radius: 20px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg,#00ffd5,#00bfff);
+        }
+
+        /* BURBUJAS CONTACTO */
+        .bubble {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            background: rgba(255,255,255,.15);
+            margin: 15px;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+            .bubble:hover {
+                transform: scale(1.2);
+                background: rgba(255,255,255,.35);
+            }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #00000066;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PARTICULAS -->
+    <div class="particles">
+        <span style="left:10%;animation-delay:0s"></span>
+        <span style="left:25%;animation-delay:3s"></span>
+        <span style="left:40%;animation-delay:6s"></span>
+        <span style="left:60%;animation-delay:2s"></span>
+        <span style="left:75%;animation-delay:5s"></span>
+        <span style="left:90%;animation-delay:1s"></span>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-dark">
+        <div class="container text-center">
+            <div class="mx-auto">
+                <button class="btn btn-outline-info mx-1" onclick="showSection('home')">Inicio</button>
+                <button class="btn btn-outline-info mx-1" onclick="showSection('sobre')">Sobre mí</button>
+                <button class="btn btn-outline-info mx-1" onclick="showSection('proyectos')">Proyectos</button>
+                <button class="btn btn-outline-info mx-1" onclick="showSection('skills')">Habilidades</button>
+                <button class="btn btn-outline-info mx-1" onclick="showSection('contacto')">Contacto</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="section active-section text-center">
+        <h1 class="title animate__animated animate__fadeInDown">Hola, soy Luis Verdugo 👨‍💻</h1>
+        <h3 class="typing"></h3>
+        <p class="lead">Desarrollador especializado en .NET, concurrencia y bases de datos</p>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section container">
+        <h2 class="text-center mb-5">Sobre mí</h2>
+
+        <div class="card p-4">
+            <div class="row align-items-center">
+
+                <div class="col-md-4 text-center">
+                    <img src="Pages/Shared/foto.jpeg" class="about-pic">
+
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        Soy Luis Armando Verdugo García, estudiante de octavo semestre de Ingeniería en Sistemas Computacionales
+                        con especialidad en desarrollo de aplicaciones web y monitoreo de sistemas industriales.
+
+                    </p>
+
+                    <p>
+                        He trabajado en proyectos con programación concurrente, simuladores de sistemas,
+                        procesamiento de información desde archivos y visualización de datos mediante gráficas.
+
+                    </p>
+
+                    <p>
+                        Me especializo en el desarrollo de software utilizando C# con .NET y Windows Forms,
+                        así como en el diseño y manejo de bases de datos relacionales en MySQL y SQL Server.
+                        Tengo experiencia creando aplicaciones eficientes, estructuradas y orientadas a la optimización de procesos.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="section container">
+        <h2 class="text-center mb-4">Proyectos</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Simulador de Restaurante Concurrente</h5>
+                    <p>
+                        Sistema desarrollado en C# que simula la atención de clientes en un restaurante utilizando
+                        hilos y sincronización de procesos para modelar concurrencia en tiempo real.
+                    </p>
+                    <small>Tecnologías: C#, Threads, Windows Forms</small>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Analizador de Rankings Musicales</h5>
+                    <p>
+                        Aplicación que importa datos desde archivos Excel y los procesa para generar
+                        consultas estadísticas y gráficas dinámicas de análisis musical.
+                    </p>
+                    <small>Tecnologías: C#, LINQ, SQL Server, Charts</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Sistema CRUD con Base de Datos</h5>
+                    <p>
+                        Sistema de gestión con operaciones completas de inserción, consulta, actualización y eliminación
+                        conectado a base de datos relacional optimizada.
+                    </p>
+                    <small>Tecnologías: C#, SQL Server, MySQL</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5>Calculadora de Salud</h5>
+                    <p>
+                        Aplicación que calcula indicadores físicos como IMC, presión arterial y temperatura,
+                        mostrando resultados de forma clara e intuitiva para el usuario.
+                    </p>
+                    <small>Tecnologías: .NET MAUI, C#</small>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- SKILLS -->
+    <section id="skills" class="section container">
+        <h2 class="text-center mb-5">Habilidades</h2>
+
+        <div class="card p-4">
+
+            <div class="mb-3">C#<div class="progress"><div class="progress-bar" style="width:90%"></div></div></div>
+            <div class="mb-3">SQL<div class="progress"><div class="progress-bar" style="width:85%"></div></div></div>
+            <div class="mb-3">Concurrencia<div class="progress"><div class="progress-bar" style="width:88%"></div></div></div>
+            <div class="mb-3">.NET<div class="progress"><div class="progress-bar" style="width:80%"></div></div></div>
+
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section container text-center">
+        <h2 class="mb-4">Contacto</h2>
+
+        <div class="d-flex justify-content-center flex-wrap">
+
+            <div class="bubble" onclick="mostrar('ig')"><i class="bi bi-instagram"></i></div>
+            <div class="bubble" onclick="mostrar('git')"><i class="bi bi-github"></i></div>
+            <div class="bubble" onclick="mostrar('tel')"><i class="bi bi-telephone"></i></div>
+
+        </div>
+
+        <div id="infoContacto" class="card mt-4 p-3" style="display:none;"></div>
+    </section>
+
+    <footer>Portafolio Luis © 2026</footer>
+
+    <script>
+
+        /* CAMBIO SECCIONES */
+        function showSection(id) {
+            document.querySelectorAll(".section").forEach(s => s.classList.remove("active-section"));
+            document.getElementById(id).classList.add("active-section");
+        }
+
+        /* EFECTO ESCRITURA */
+        const textos = ["Ingeniero en formación", "Experto en C#", ".NET Developer", "Programador lógico"];
+        let i = 0, j = 0, txt = "", escribiendo = true;
+        function escribir() {
+            let el = document.querySelector(".typing");
+            if (escribiendo) {
+                txt = textos[i].substring(0, j++);
+                el.textContent = txt;
+                if (j > textos[i].length) { escribiendo = false; setTimeout(escribir, 1200); return; }
+            } else {
+                txt = textos[i].substring(0, j--);
+                el.textContent = txt;
+                if (j == 0) { escribiendo = true; i = (i + 1) % textos.length; }
+            }
+            setTimeout(escribir, 60);
+        }
+        escribir();
+
+        /* CONTACTO */
+        function mostrar(tipo) {
+            let box = document.getElementById("infoContacto");
+            box.style.display = "block";
+
+            if (tipo == "ig") box.innerHTML = "Instagram: @Luisverdugo";
+            if (tipo == "git") box.innerHTML = "GitHub: github.com/22340367-ops";
+            if (tipo == "tel") box.innerHTML = "Teléfono: 6621234567";
+        }
+    </script>
+
+</body>
+</html>
